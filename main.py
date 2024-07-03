@@ -27,7 +27,7 @@ while running:
         answer = str(impulse_momentum(params['m'], params['vi'], params['vf'], params['t'], params['fnet'])[0])
         output_answer(answer, params)
     # Work Energy Theorem
-    if operation == "2":
+    elif operation == "2":
         params = {
             "m": 0.0,
             "vi": 0.0,
