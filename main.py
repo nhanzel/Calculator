@@ -16,7 +16,9 @@ while running:
     print(operations())
     operation = input("Enter operation: ")
 
+    #
     # Impulse Momentum Theorem
+    #
     if operation == "1":
         params = {
             "m": 0.0,
@@ -34,7 +36,9 @@ while running:
         answer = str(impulse_momentum(params['m'], params['vi'], params['vf'], params['t'], params['fnet'])[0])
         output_answer(answer, params)
 
+    #
     # Work Energy Theorem
+    #
     elif operation == "2":
         params = {
             "m": 0.0,
@@ -51,8 +55,10 @@ while running:
 
         answer = str(work_energy(params['m'], params['vi'], params['vf'], params['x'], params['fnet'])[0])
         output_answer(answer, params)
-
+        
+    #
     # Free Body Diagram
+    #
     elif operation == "3":
         print("\n")
         x_components = get_components("X")
@@ -77,7 +83,9 @@ while running:
             print(a)
         print("\n")
 
+    #
     # Mechanical Energy Theorem
+    #
     elif operation == "4":
         params = {
             "m": 0.0,
