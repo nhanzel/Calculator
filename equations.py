@@ -21,18 +21,18 @@ equation_code = { # formatted as python accessible strings
 }
 
 ## FUNCTIONS
-def impulse_momentum(m, v1, v2, t, fnet):
+def impulse_momentum(m, vi, vf, t, fnet):
     if m == "?":
         m = sp.Symbol("m")
-    elif v1 == "?":
-        v1 = sp.Symbol("v1")
-    elif v2 == "?":
-        v2 = sp.Symbol("v2")
+    elif vi == "?":
+        vi = sp.Symbol("vi")
+    elif vf == "?":
+        vf = sp.Symbol("vf")
     elif t == "?":
         t = sp.Symbol("t")
     elif fnet == "?":
         fnet = sp.Symbol("fnet")
-    eq = -(fnet * t) + (m * (v2 - v1))
+    eq = -(fnet * t) + (m * (vf - vi))
     return sp.solve(eq)
 
 def work_energy(m, vi, vf, x, fnet):
@@ -93,6 +93,24 @@ def free_body_diagram(x_components, y_components, unknowns):
     y_result = sp.sympify(y_equation)
 
     return sp.solve([x_result, y_result], symbol_unknowns, dict=True)
+
+def mechanical_energy(m, vi, vf, hi, hf, wnc, g):
+    if g == "?" or g == "": #special case to allow earth gravity to be a blank input
+        g = 9.81 if g == "" else sp.Symbol("g")
+    if m == "?":
+        m = sp.Symbol("m")
+    elif vi == "?":
+        vi = sp.Symbol("vi")
+    elif vf == "?":
+        vf = sp.Symbol("vf")
+    elif hi == "?":
+        hi = sp.Symbol("hi")
+    elif hf == "?":
+        hf = sp.Symbol("hf")
+    elif wnc == "?":
+        wnc = sp.Symbol("wnc")
+    eq = (.5 * m * (vf**2 - vi**2)) + (m * g * (hf - hi)) - wnc
+    return sp.solve(eq)
 
 ## HELPERS
 def get_components(axis):

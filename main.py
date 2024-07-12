@@ -8,7 +8,8 @@ os.system('clear')
 def operations():
     return """1. Impulse Momentum Theorem (working equation)\n
 2. Work Energy Theorem (working equation)\n
-3. Free Body Diagram (\u03A3F = ma)\n"""
+3. Free Body Diagram (\u03A3F = ma)\n
+4. Mechanical Energy (Ki + Ui + Wnc = Kf + Uf)\n"""
 
 while running:
     sympy.init_printing(use_unicode=True)
@@ -75,7 +76,34 @@ while running:
         for a in answer:
             print(a)
         print("\n")
-        
+
+    # Mechanical Energy Theorem
+    elif operation == "4":
+        params = {
+            "m": 0.0,
+            "vi": 0.0,
+            "vf": 0.0,
+            "hi": 0.0,
+            "hf": 0.0,
+            "wnc": 0.0,
+            "g": 0.0
+        }
+        params['m'] = get_input_param("Enter mass (m): ")
+        params['vi'] = get_input_param("Enter initial velocity (vi): ")
+        params['vf'] = get_input_param("Enter final velocity (vf): ")
+        params['hi'] = get_input_param("Enter initial height (hi): ")
+        params['hf'] = get_input_param("Enter final height (hf): ")
+        params['wnc'] = get_input_param("Enter work non-conservative (wnc): ")
+        params['g'] = get_input_param("Enter gravity (g): ")
+
+        answer = str(mechanical_energy(params['m'], params['vi'], params['vf'], params['hi'], params['hf'], params['wnc'], params['g'])[0])
+        if (params['m'] == "?"):
+            print("\n")
+            print("can't solve for mass (m), could be anything")
+            print("\n")
+        else:
+            output_answer(answer, params)
+
     else:
         print("\n")
         print("Invalid operation")
