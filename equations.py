@@ -112,6 +112,19 @@ def mechanical_energy(m, vi, vf, hi, hf, wnc, g):
     eq = (.5 * m * (vf**2 - vi**2)) + (m * g * (hf - hi)) - wnc
     return sp.solve(eq)
 
+def center_of_mass(masses):
+    dimensions = len(masses[0]) - 1
+    component_vector = [0.0, 0.0, 0.0]
+    result_vector = []
+    for mass in masses:
+        weight = float(mass[0])
+        for d in range(dimensions):
+            component_vector[d] += weight * float(mass[d + 1])
+    for component in component_vector:
+        component /= sum([float(mass[0]) for mass in masses])
+        result_vector.append(component)
+    return result_vector
+
 ## HELPERS
 def get_components(axis):
     components = []

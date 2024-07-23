@@ -6,6 +6,8 @@
 
 #### free body diagram
 
-## TODO
-
 #### momentum conservation theorem
+
+#### center of mass
+
+## TODO

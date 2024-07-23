@@ -9,7 +9,8 @@ def operations():
     return """1. Impulse Momentum Theorem (working equation)\n
 2. Work Energy Theorem (working equation)\n
 3. Free Body Diagram (\u03A3F = ma)\n
-4. Mechanical Energy (Ki + Ui + Wnc = Kf + Uf)\n"""
+4. Mechanical Energy (Ki + Ui + Wnc = Kf + Uf)\n
+5. Center of Mass\n"""
 
 while running:
     sympy.init_printing(use_unicode=True)
@@ -20,6 +21,7 @@ while running:
     # Impulse Momentum Theorem
     #
     if operation == "1":
+        print("\n")
         params = {
             "m": 0.0,
             "vi": 0.0,
@@ -40,6 +42,7 @@ while running:
     # Work Energy Theorem
     #
     elif operation == "2":
+        print("\n")
         params = {
             "m": 0.0,
             "vi": 0.0,
@@ -87,6 +90,7 @@ while running:
     # Mechanical Energy Theorem
     #
     elif operation == "4":
+        print("\n")
         params = {
             "m": 0.0,
             "vi": 0.0,
@@ -111,6 +115,26 @@ while running:
             print("\n")
         else:
             output_answer(answer, params)
+
+    #
+    # Center of Mass
+    #
+    elif operation == "5":
+        print("\n")
+        masses = []
+        inputting_mass = True
+        while (inputting_mass):
+            raw_mass = input("Enter m,x,y,z for one mass: (press enter when done)")
+            if raw_mass == "":
+                inputting_mass = False
+            else:
+                masses.append(raw_mass.split(","))
+        result = center_of_mass(masses)
+        print("\n")
+        print("X Component: " + str(result[0]))
+        print("Y Component: " + str(result[1]))
+        print("Z Component: " + str(result[2]))
+        print("\n")
 
     else:
         print("\n")
