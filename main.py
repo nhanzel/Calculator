@@ -10,7 +10,8 @@ def operations():
 2. Work Energy Theorem (working equation)\n
 3. Free Body Diagram (\u03A3F = ma)\n
 4. Mechanical Energy (Ki + Ui + Wnc = Kf + Uf)\n
-5. Center of Mass\n"""
+5. Center of Mass\n
+6. Angular Momentum (component wise)\n"""
 
 while running:
     sympy.init_printing(use_unicode=True)
@@ -134,6 +135,18 @@ while running:
         print("X Component: " + str(result[0]))
         print("Y Component: " + str(result[1]))
         print("Z Component: " + str(result[2]))
+        print("\n")
+
+    #
+    # Angular Momentum
+    #
+    elif operation == "6":
+        print("\n")
+        v1 = input("Enter first vector (x,y,z): ").split(",")
+        v2 = input("Enter second vector (x,y,z): ").split(",")
+        result = angular_momentum(v1, v2)
+        print("\n")
+        print(result)
         print("\n")
 
     else:

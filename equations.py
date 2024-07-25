@@ -125,6 +125,11 @@ def center_of_mass(masses):
         result_vector.append(component)
     return result_vector
 
+def angular_momentum(v1, v2):
+    f1 = [float(v1[0]), float(v1[1]), float(v1[2])]
+    f2 = [float(v2[0]), float(v2[1]), float(v2[2])]
+    return np.cross(f1, f2)
+
 ## HELPERS
 def get_components(axis):
     components = []
